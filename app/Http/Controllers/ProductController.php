@@ -7,36 +7,67 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // create product
-    public function create(Request $request){
-        //return Product::create($request->input());
-        $data = $request->input();
-        foreach($data as $item){
-            Product::create(
-                [
-                    "product_id"=>$item["product_id"],
-                    "name"=>$item["name"],
-                    "description"=>$item["description"],
-                    "price"=>$item["price"],
-                    "stock"=>$item["stock"],
-                ]
-            );
+    public function product(Request $request){
+        /*$query = Product::get();*/
+        $query = Product::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%')->paginate(2);
         }
-        return "ok";
+
+        $products = $query->paginate(3);
+        $search = $request->search ?? '';
+
+        return view('pages.index', ['product' => $products, 'search' => $search]);
+        
     }
-    //read product
-    public function read(){
-        return Product::get();
+    public function create(){
+        return view('pages.create');
     }
-    //update product
-    public function update(Request $request){
-        $id = $request->id;
-        $body = $request->input();
-        return Product::where('id',$id)->update($body);
+
+    public function store(Request $request){
+        $request->validate([
+            'product_id' => 'required|unique:products',
+            'name' => "required|min:3|max:100",
+            'description' => 'required|min:3|max:300',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric'
+        ]);
+        Product::create($request->all());
+        return redirect()->route('index')->with('success', 'Product created successfully.');
     }
-    //delete product
+
+    public function edit($id){
+        $data = Product::where('id',$id)->first();
+        return view('pages.edit',compact('data'));
+    }
+    public function update(Request $request, $id) {
+        // Validation
+        $request->validate([
+            'product_id' => 'required|unique:products,product_id,' . $id,
+            'name' => 'required|min:3|max:100',
+            'description' => 'required|min:3|max:300',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric'
+        ]);
+    
+        // Update product
+        Product::where('id', $id)->update([
+            'product_id' => $request->input('product_id'),
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'stock' => $request->input('stock')
+        ]);
+    
+        return redirect()->route('index')->with('success', 'Product updated successfully.');
+    }
+
     public function delete(Request $request){
         $id = $request->id;
-        return Product::where('id',$id)->delete();
+        Product::where('id',$id)->delete();
+        return redirect()->route('index');
     }
+    
 }
