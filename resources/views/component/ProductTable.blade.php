@@ -1,5 +1,5 @@
 <table class="w-full text-sm text-left text-gray-500">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+    <thead class="text-base text-gray-900 capitalize bg-gray-50">
         <tr class="text-base">
             <th scope="col" class="px-6 py-3">
                 SL
@@ -20,6 +20,9 @@
                 Stock
             </th>
             <th scope="col" class="px-6 py-3">
+                Image
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Action
             </th>
         </tr>
@@ -27,7 +30,7 @@
     <tbody>
         @foreach($product as $item)
             
-            <tr class="bg-white border-b text-base">
+            <tr class="bg-white border-b text-sm">
                 <th class="px-6 py-4">
                     {{ $loop->iteration }}
                 </th>
@@ -45,6 +48,9 @@
                 </td>
                 <td class="px-6 py-4">
                     {{$item['stock']}}
+                </td>
+                <td class="px-6 py-4">
+                    <img src="{{ asset($item['image']) }}" alt="Image description" height="60" width="60" alt="{{ asset($item['image']) }}">
                 </td>
                 <!-- edit -->
                 <td class="px-6 py-4 flex">

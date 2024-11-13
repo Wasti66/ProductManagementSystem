@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 07:00 AM
+-- Generation Time: Nov 13, 2024 at 01:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -154,13 +154,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_id`, `name`, `description`, `price`, `stock`, `image`, `created_at`, `updated_at`) VALUES
-(5, '101', 'Wireless Earbuds', 'High-quality wireless earbuds with noise-cancellation and up to 20 hours of battery life.', 59.99, 150, '0', '2024-11-08 14:36:21', '2024-11-08 14:36:21'),
-(6, '102', 'Smart Fitness Watch', 'A sleek fitness watch with heart rate monitoring, GPS, and sleep tracking.', 129.99, 75, '0', '2024-11-08 14:37:08', '2024-11-08 14:37:08'),
-(7, '103', 'Bluetooth Speaker', 'Portable Bluetooth speaker with deep bass, waterproof, and up to 10 hours of playtime.', 45.99, 200, '0', '2024-11-08 14:38:34', '2024-11-08 14:38:34'),
-(8, '104', '4K Action Camera', 'Compact 4K action camera with waterproof housing and wide-angle lens.', 199.99, 60, '0', '2024-11-08 23:53:32', '2024-11-08 23:53:32'),
-(9, '105', 'Electric Toothbrush', 'Rechargeable electric toothbrush with multiple brushing modes and a 2-minute timer.', 34.99, 180, '0', '2024-11-08 23:54:18', '2024-11-08 23:54:18'),
-(10, '106', 'Gaming Mouse', 'Ergonomic gaming mouse with customizable RGB lighting and high-precision sensor.', 24.99, 90, '0', '2024-11-08 23:54:55', '2024-11-08 23:54:55'),
-(11, '107', 'Laptop Backpack', 'Water-resistant laptop backpack with USB charging port, suitable for 15.6-inch laptops.', 39.99, 120, '0', '2024-11-08 23:56:26', '2024-11-08 23:56:26');
+(1, '101', 'Carrots', 'Fresh, sweet, and crunchy orange carrots ideal for salads and cooking.', 1.50, 100, 'images/1731230898.png', '2024-11-10 03:28:18', '2024-11-10 03:28:18'),
+(2, '102', 'Tomatoes', 'Juicy, ripe tomatoes perfect for sauces, salads, and garnishes.', 2.00, 80, 'images/1731230950.png', '2024-11-10 03:29:10', '2024-11-10 03:29:10'),
+(3, '103', 'Potatoes', 'Versatile potatoes, ideal for boiling, baking, or frying.', 1.20, 200, 'images/1731230983.png', '2024-11-10 03:29:43', '2024-11-10 03:29:43'),
+(4, '104', 'Spinach', 'Assorted colors (red, green, yellow), crisp and sweet. Perfect for roasting, stuffing, and salads.', 4.00, 90, 'images/1731231024.png', '2024-11-10 03:30:24', '2024-11-10 03:30:24'),
+(5, '105', 'Broccoli', 'Rich in vitamins, ideal for steaming, stir-frying, and roasting.', 3.50, 40, 'images/1731231081.png', '2024-11-10 03:31:21', '2024-11-10 03:31:21');
 
 -- --------------------------------------------------------
 
@@ -182,8 +180,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('MMOxW3lXe5aWBLTC65s3ccmh9jcNfaahzwD3c4Ig', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRTh5d2NDTW1adXpMQUMyd3hlNTJMTVhCdThuSHRjR0xEdFhDTFlIOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1731126811),
-('O0sjlLvOADzbdlIaFlgpFdTUSBPZyvfTbKKhIMY7', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVG85OThyV0dYdGhuWHdPQlNGcGdIaGJBUWs2WUE1Nk94YnBjMmdRaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731131977);
+('ocCXZZy6vu4WRRx2K2JRPoc0FJAvSh4uNdF4kbgW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQTZPQ3p0QjhDYTJWbVZrSFZLZEJLeFVjbTJGa1RmdEdQOUN5bzRWMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731231122),
+('X1Uv2JF40d3axZlPToqBuAWol5yqxqmRVJ5q5cnh', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYnBhN3J4VUd5MXdRNGk4dVhGbndZRk1DQmVOMEZTaXFSa2hhM2E0NyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731178211);
 
 -- --------------------------------------------------------
 
@@ -298,7 +296,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

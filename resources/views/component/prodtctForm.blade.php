@@ -1,4 +1,4 @@
-<form action="{{ route('create.submit') }}" method="post">
+<form action="{{ route('create.submit') }}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- product id -->
     <div class="mb-3">
@@ -37,6 +37,14 @@
         <label for="stock" class="text-sm font-semibold capitalize">stock</label>
         <input type="text" id="stock" name="stock" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg w-full focus:outline-none focus:border-[#233a95] focus:ring-1 focus:ring-[#233a95] p-2.5"  value="{{ old('stock') }}"> 
         @error('stock')
+            <div class="text-red-600">{{ $message }}</div>
+        @enderror    
+    </div>
+    <!-- images -->
+    <div class="mb-3">
+        <label for="image" class="text-sm font-semibold capitalize">Image</label>
+        <input type="file" id="image" name="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg w-full focus:outline-none focus:border-[#233a95] focus:ring-1 focus:ring-[#233a95] p-2.5"  value="{{ old('image') }}"> 
+        @error('image')
             <div class="text-red-600">{{ $message }}</div>
         @enderror    
     </div>

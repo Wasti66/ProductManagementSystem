@@ -13,13 +13,13 @@ class ProductController extends Controller
 
         if ($request->has('search')) {
             $query->where('name', 'like', '%' . $request->search . '%')
-                ->orWhere('description', 'like', '%' . $request->search . '%')->paginate(2);
+                ->orWhere('description', 'like', '%' . $request->search . '%');
         }
 
         $products = $query->paginate(3);
         $search = $request->search ?? '';
 
-        return view('pages.index', ['product' => $products, 'search' => $search]);
+        return view('pages.index',['product' => $products, 'search' => $search]);
         
     }
     public function create(){
@@ -27,14 +27,25 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
+        $validated = $request->validate([
             'product_id' => 'required|unique:products',
             'name' => "required|min:3|max:100",
             'description' => 'required|min:3|max:300',
             'price' => 'required|numeric',
-            'stock' => 'required|numeric'
+            'stock' => 'required|numeric',
+            'image' => 'required'
         ]);
-        Product::create($request->all());
+        
+        if ($request->hasFile('image')) {
+            // Generate a unique filename
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            // Store the image in the public directory
+            $request->image->move(public_path('images'), $imageName);
+            // Save the image path in the validated data
+            $validated['image'] = 'images/' . $imageName;
+        }
+    
+        Product::create($validated);
         return redirect()->route('index')->with('success', 'Product created successfully.');
     }
 
